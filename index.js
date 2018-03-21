@@ -1,9 +1,10 @@
-const RtmClient     = require('@slack/client').RtmClient;
+//const RtmClient     = require('@slack/client').RtmClient;
+const { RTMClient } = require('@slack/client');
 const WebClient     = require('@slack/client').WebClient;
 const RTM_EVENTS    = require('@slack/client').RTM_EVENTS;
 
 const bot_token     = process.env.BOT_TOKEN;
-const rtm           = new RtmClient(bot_token);
+const rtm           = new RTMClient(bot_token);
 const web           = new WebClient(bot_token);
 
 const robotName     = process.env.BOT_NAME;
@@ -24,7 +25,7 @@ function getUsernameFromId(id) {
     return user ? user.name : 'unknown member';
 }
 
-rtm.on(RTM_EVENTS.MESSAGE, function handleRtmMessage(message) {
+rtm.on('message', function handleRtmMessage(message) {
     if (message.type === 'message' && message.text) {
         const userName = getUsernameFromId(message.user);
         if (userName !== robotName) {
