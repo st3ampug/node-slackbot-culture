@@ -26,6 +26,8 @@ var onMessage = (message) => {
     if(message.type === 'message' && Boolean(message.text)) {
       var channel = channels.find(channel => channel.id === message.channel);
       var usr = users.find(user => user.id === message.user);
+
+      console.log(usr);
   
       if(usr.name !== bot_name) {
         bot.postMessageToUser("bpolgar", "You rang?");
