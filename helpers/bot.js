@@ -29,8 +29,12 @@ var onMessage = (message) => {
 
       console.log(usr);
   
-      if(usr.name !== bot_name) {
-        bot.postMessageToUser("bpolgar", "You rang?");
+      if(typeof usr !== 'undefined') {
+        if(usr.name !== bot_name) {
+            bot.postMessageToUser("bpolgar", "You rang?");
+        }
+      } else {
+          console.error("usr obj undefined");
       }
     }
   }
