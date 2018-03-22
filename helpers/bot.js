@@ -37,12 +37,18 @@ var onMessage = (message) => {
         if(typeof usr !== 'undefined') {
             if(usr.name !== bot_name) {
                 if(typeof channel !== 'undefined') {
+                    // Channel specified, need to reply in that channel
+
                     logger.Log("Reply about to be posted in a channel: " + channel.name);
                     bot.postMessageToChannel(channel.name, "Your rang?");
                 } else {
+                    // No channel specified, need to reply in a pm to the user
+
                     logger.Log("Reply about to be posted in a pm: " + usr.name);
                     bot.postMessageToUser(usr.name, "Your rang?");
                 }
+            } else {
+                logger.Log("Bots own message, not replying");
             }
         } else {
             logger.Error("usr obj undefined");
