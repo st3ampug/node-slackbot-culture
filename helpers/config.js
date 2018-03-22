@@ -7,6 +7,6 @@ module.exports = {
         format: 'Y-m-d H:M:S'
     },
     debug: {
-        state: true
+        state: process.env.DEBUG_STATE
     }
 }
