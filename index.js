@@ -1,4 +1,5 @@
 var slackbot        = require('./helpers/bot'); // import slackbot library
+var logger          = require('./helpers/mylogger.js');
 var express         = require('express');
 var router          = require('./helpers/routes');
 
