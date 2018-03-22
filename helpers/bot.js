@@ -1,9 +1,8 @@
 var SlackBot = require('slackbots');
-const bot_name = "culture-group";
 
 var bot = new SlackBot({
     token: process.env.BOT_TOKEN,
-    name: bot_name
+    name: process.env.BOT_NAME
 });
 
 exports.run = () => {
@@ -26,8 +25,6 @@ var onMessage = (message) => {
     if(message.type === 'message' && Boolean(message.text)) {
       var channel = channels.find(channel => channel.id === message.channel);
       var usr = users.find(user => user.id === message.user);
-
-      console.log(usr);
   
       if(typeof usr !== 'undefined') {
         if(usr.name !== bot_name) {

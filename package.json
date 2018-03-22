@@ -4,13 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index2.js",
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "author": "Balint Polgar - Waracle",
   "license": "ISC",
   "dependencies": {
-    "@slack/client": "^4.0.1",
     "express": "^4.16.3",
     "slackbots": "^1.1.0"
   }
