@@ -9,7 +9,7 @@ var port            = process.env.PORT || 8080;
 app.use('/', router);
 
 app.listen(port, function() {
-  console.log('app started');
+  logger.Log('app started');
 });
 
 slackbot.run();

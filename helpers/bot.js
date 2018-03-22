@@ -1,9 +1,9 @@
 var SlackBot = require('slackbots');
+const configs = require('./config.js');
+var logger = require('./mylogger.js');
 
-var bot = new SlackBot({
-    token: process.env.BOT_TOKEN,
-    name: process.env.BOT_NAME
-});
+var bot = new SlackBot(configs.slack);
+const bot_name = configs.slack.name;
 
 exports.run = () => {
     bot.on('start', onStart);
@@ -11,27 +11,36 @@ exports.run = () => {
 }
 
 var onStart = () => {
-    console.log('Bot started');
+    logger.Log('Bot started');
 }
 
 var onMessage = (message) => {
+    logger.Log('onMessage');
+
     users = [];
     channels = [];
     var botUsers = bot.getUsers();
     users = botUsers._value.members;
     var botChannels = bot.getChannels();
     channels = botChannels._value.channels;
+
+    logger.Log('Incoming message type: ' + message.type);
   
     if(message.type === 'message' && Boolean(message.text)) {
       var channel = channels.find(channel => channel.id === message.channel);
       var usr = users.find(user => user.id === message.user);
+
+      logger.Log('Message channel: ' + channel);
+      logger.Log('Message user: ' + usr);
   
       if(typeof usr !== 'undefined') {
         if(usr.name !== bot_name) {
-            bot.postMessageToUser("bpolgar", "You rang?");
+            logger.Log("Reply about to be posted");
+            bot.postMessageToChannel(channel, "Your rang?");
+            //bot.postMessageToUser("bpolgar", "You rang?");
         }
       } else {
-          console.error("usr obj undefined");
+          logger.Error("usr obj undefined");
       }
     }
   }
