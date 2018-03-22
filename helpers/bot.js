@@ -55,3 +55,6 @@ var onMessage = (message) => {
         }
     }
 }
+
+// TODO
+// Take a look at how to address the bot for it to then save the suggestions
