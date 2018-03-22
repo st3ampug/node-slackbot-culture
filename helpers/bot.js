@@ -44,8 +44,6 @@ var onMessage = (message) => {
                     bot.postMessageToUser(usr.name, "Your rang?");
                 }
             }
-        }
-            
         } else {
             logger.Error("usr obj undefined");
         }
