@@ -39,6 +39,11 @@ var onMessage = (message) => {
                 if(typeof channel !== 'undefined') {
                     // Channel specified, need to reply in that channel
 
+                    if(message.text.includes(configs.constants.bot_user)) {
+                        logger.Log("Bot mentioned in message: " + configs.constants.bot_user);
+                        bot.postMessageToChannel(channel.name, "Ah I can see I have been mentioned :)");
+                    }
+
                     logger.Log("Reply about to be posted in a channel: " + channel.name);
                     bot.postMessageToChannel(channel.name, "Your rang?");
                 } else {
@@ -54,6 +59,11 @@ var onMessage = (message) => {
             logger.Error("usr obj undefined");
         }
     }
+}
+
+function checkMentionRegex(text) {
+    var reg = new RegExp(configs.regex.user_mention);
+    return reg.test(text);
 }
 
 // TODO

@@ -8,5 +8,11 @@ module.exports = {
     },
     debug: {
         state: process.env.DEBUG_STATE
+    },
+    regex: {
+        user_mention: '<@.*>'        
+    },
+    constants: {
+        bot_user: '<@U9R87EK45>'
     }
 }
