@@ -3,19 +3,19 @@ const configs = require("./config.js");
 
 function Log(txt) {
     if(configs.debug.state) {
-        console.log(getFormattedDate() + ": " + txt);
+        console.log(getFormattedDate() + "[Debug]: " + txt);
     }
 }
 
 function Error(txt) {
     if(configs.debug.state) {
-        console.error(getFormattedDate() + ": " + txt);
+        console.error(getFormattedDate() + "[Error]: " + txt);
     }
 }
 
 function getFormattedDate() {
     var dt = dateTime.create();
-    return dt.format(configs.date.format);
+    return "[" + dt.format(configs.date.format) + "]";
 }
 
 module.exports = {

@@ -30,8 +30,8 @@ var onMessage = (message) => {
       var channel = channels.find(channel => channel.id === message.channel);
       var usr = users.find(user => user.id === message.user);
 
-      logger.Log('Message channel: ' + channel);
-      logger.Log('Message user: ' + usr);
+      logger.Log('Message channel: ' + JSON.stringify(channel));
+      logger.Log('Message user: ' + JSON.stringify(usr));
   
       if(typeof usr !== 'undefined') {
         if(usr.name !== bot_name) {
