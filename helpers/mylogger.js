@@ -3,13 +3,13 @@ const configs = require("./config.js");
 
 function Log(txt) {
     if(configs.debug.state) {
-        console.log(getFormattedDate() + "[Debug]: " + txt);
+        console.log(getFormattedDate() + " [Debug]: " + txt);
     }
 }
 
 function Error(txt) {
     if(configs.debug.state) {
-        console.error(getFormattedDate() + "[Error]: " + txt);
+        console.error(getFormattedDate() + " [Error]: " + txt);
     }
 }
 

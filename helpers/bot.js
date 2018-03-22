@@ -36,7 +36,7 @@ var onMessage = (message) => {
       if(typeof usr !== 'undefined') {
         if(usr.name !== bot_name) {
             logger.Log("Reply about to be posted");
-            bot.postMessageToChannel(channel, "Your rang?");
+            bot.postMessageToChannel(channel.name, "Your rang?");
             //bot.postMessageToUser("bpolgar", "You rang?");
         }
       } else {
