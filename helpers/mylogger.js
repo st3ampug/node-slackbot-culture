@@ -1,5 +1,5 @@
 var dateTime = require('node-datetime');
-const configs = require("./config.js");
+const configs = require("../configs/config.js");
 
 function Log(txt) {
     if(configs.debug.state) {
