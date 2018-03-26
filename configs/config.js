@@ -13,11 +13,11 @@ module.exports = {
         user_mention: '<@.*>'        
     },
     constants: {
-        bot_user: '<@U9R87EK45>'
+        bot_user: '<@U9R87EK45>',
+        message_to_match_for: "hey @" + slack.name + " my suggestion is"
     },
     google: {
-        //"SHEETID": process.env.G_SHEET_ID,
-        "SHEETID": "1pG1E9XCzg9M_26gU3Lah-SSovZWfI14X3-BgokYzvZU",
+        "SHEETID": process.env.G_SHEET_ID,
         "SHEETNUMBER": 1 // first sheet of the document
     }
 }

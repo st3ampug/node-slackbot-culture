@@ -1,6 +1,7 @@
 var SlackBot = require('slackbots');
 const configs = require('../configs/config.js');
 var logger = require('./mylogger.js');
+var pokeGoogle = require('./pokeGoogle.js');
 
 var bot = new SlackBot(configs.slack);
 const bot_name = configs.slack.name;
@@ -40,12 +41,20 @@ var onMessage = (message) => {
                     // Channel specified, need to reply in that channel
 
                     if(message.text.includes(configs.constants.bot_user)) {
-                        logger.Log("Bot mentioned in message: " + configs.constants.bot_user);
-                        bot.postMessageToChannel(channel.name, "Ah I can see I have been mentioned :)");
+                        
+                        if(String(message.text).toLowerCase.startsWith(configs.constants.message_to_match_for)) {
+                            pokeGoogle.pushMessageToSheet(message.text, usr.name);
+                            bot.postMessageToChannel(channel.name, "Attempting to post your message to the related spreadsheet");
+
+                        } else {
+                            logger.Log("Bot mentioned in message: " + configs.constants.bot_user);
+                            bot.postMessageToChannel(channel.name,
+                                "Ah I can see I have been mentioned, please start your message with `Hey @" +
+                                bot_name + " my suggestion is:` and I will save your suggestion for a topic to be discussed!");
+                        }
                     }
 
                     logger.Log("Reply about to be posted in a channel: " + channel.name);
-                    bot.postMessageToChannel(channel.name, "Your rang?");
                 } else {
                     // No channel specified, need to reply in a pm to the user
 
