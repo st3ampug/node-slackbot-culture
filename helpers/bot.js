@@ -1,5 +1,5 @@
 var SlackBot = require('slackbots');
-const configs = require('./config.js');
+const configs = require('../configs/config.js');
 var logger = require('./mylogger.js');
 
 var bot = new SlackBot(configs.slack);
