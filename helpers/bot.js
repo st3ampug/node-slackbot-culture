@@ -31,23 +31,21 @@ var onMessage = (message) => {
         var channel = channels.find(channel => channel.id === message.channel);
         var usr = users.find(user => user.id === message.user);
 
-        logger.Log('Message object: ' + JSON.stringify(message));
-        logger.Log('Message channel: ' + JSON.stringify(channel));
-        logger.Log('Message user: ' + JSON.stringify(usr));
+        // logger.Log('Message object: ' + JSON.stringify(message));
+        // logger.Log('Message channel: ' + JSON.stringify(channel));
+        // logger.Log('Message user: ' + JSON.stringify(usr));
 
         if(typeof usr !== 'undefined') {
             if(usr.name !== bot_name) {
                 if(typeof channel !== 'undefined') {
                     // Channel specified, need to reply in that channel
 
-                    if(message.text.includes(configs.constants.bot_user)) {
-                        
-                        if(String(message.text).toLowerCase.startsWith(configs.constants.message_to_match_for)) {
-                            pokeGoogle.pushMessageToSheet(message.text, usr.name);
+                    if(message.text.includes(configs.constants.bot_user)) {                        
+                        if(String(message.text).toLowerCase().startsWith(configs.constants.message_to_match_for.toLowerCase())) {
                             bot.postMessageToChannel(channel.name, "Attempting to post your message to the related spreadsheet");
+                            pokeGoogle.pushMessageToSheet(message.text, usr.name);
 
                         } else {
-                            logger.Log("Bot mentioned in message: " + configs.constants.bot_user);
                             bot.postMessageToChannel(channel.name,
                                 "Ah I can see I have been mentioned, please start your message with `Hey @" +
                                 bot_name + " my suggestion is:` and I will save your suggestion for a topic to be discussed!");
@@ -74,6 +72,3 @@ function checkMentionRegex(text) {
     var reg = new RegExp(configs.regex.user_mention);
     return reg.test(text);
 }
-
-// TODO
-// Take a look at how to address the bot for it to then save the suggestions

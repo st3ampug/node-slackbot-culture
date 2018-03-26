@@ -14,7 +14,7 @@ module.exports = {
     },
     constants: {
         bot_user: '<@U9R87EK45>',
-        message_to_match_for: "hey @" + slack.name + " my suggestion is"
+        message_to_match_for: "Hey <@U9R87EK45> my suggestion is"
     },
     google: {
         "SHEETID": process.env.G_SHEET_ID,
