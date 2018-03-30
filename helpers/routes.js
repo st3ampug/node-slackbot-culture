@@ -11,8 +11,6 @@ router.get('/', function(req, res) {
 router.get('/bot/:q', function(req, res) {
   if(String(req.params.q).toLowerCase() == 'start') {
     slackbot.run();
-  } else if (String(req.params.q).toLowerCase() == 'connect') {
-    slackbot.connect();
   }
 
   res.send('GET request for bot');

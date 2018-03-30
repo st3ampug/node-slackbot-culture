@@ -9,6 +9,9 @@ const bot_name = configs.slack.name;
 exports.run = () => {
     bot.on('start', onStart);
     bot.on('message', onMessage);
+    bot.on('open', onOpen);
+    bot.on('close', onClose);
+    bot.on('error', onError);
 }
 
 var onStart = () => {
@@ -66,6 +69,18 @@ var onMessage = (message) => {
             logger.Error("usr obj undefined");
         }
     }
+}
+
+var onOpen = () => {
+    logger.Log('Bot event: open');
+}
+
+var onClose = () => {
+    logger.Log('Bot event: close');
+}
+
+var onError = () => {
+    logger.Error('Bot event: error');
 }
 
 function checkMentionRegex(text) {
